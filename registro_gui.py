@@ -146,8 +146,7 @@ combo_dia.pack(side=tk.LEFT, padx=4)
 
 combo_mes = ttk.Combobox(frame_fecha, values=[
     "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-    "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
 ], width=10, font=fuente_general)
 combo_mes.pack(side=tk.LEFT, padx=4)
 

@@ -53,6 +53,13 @@ def guardar_datos():
         messagebox.showerror("❌ Error", "Fecha de nacimiento inválida.")
         return
 
+    # ✅ Confirmación antes de guardar
+    confirmar = messagebox.askyesno("Confirmación", f"¿Deseas guardar los datos de {nombre}?")
+    if not confirmar:
+        messagebox.showinfo("Cancelado", "Registro cancelado.")
+        return
+
+    # Guardar datos si se confirma
     wb = load_workbook(archivo_excel)
     ws = wb.active
     ws.append([nombre, apellido_pat, apellido_mat, codigo, numero, fecha_nac])
@@ -71,7 +78,7 @@ def guardar_datos():
 # ==================== 🎨 ESTILO ELEGANTE CON FUENTE GRANDE ====================
 ventana = tk.Tk()
 ventana.title("🎂 Registro de Cumpleaños")
-ventana.geometry("440x580")  # Altura aumentada para que se vea el botón
+ventana.geometry("440x580")  # Altura ajustada
 
 # Fuente global
 fuente_general = ("Segoe UI", 12)
@@ -94,9 +101,7 @@ style.configure("TLabel", font=fuente_general, background=fondo_color, foregroun
 style.configure("TEntry", font=fuente_general, fieldbackground=campo_color, foreground=texto_color)
 style.configure("TCombobox", font=fuente_general, fieldbackground=campo_color, background=campo_color, foreground=texto_color)
 style.configure("TButton", font=fuente_boton, background=boton_color, foreground="black", borderwidth=0)
-style.map("TButton",
-          background=[("active", boton_hover)],
-          foreground=[("active", "black")])
+style.map("TButton", background=[("active", boton_hover)])
 
 def crear_label(texto):
     return ttk.Label(ventana, text=texto)
